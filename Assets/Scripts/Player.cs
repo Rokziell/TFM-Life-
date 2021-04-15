@@ -12,10 +12,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector3 eulerAngleVelocity;
     [SerializeField] private bool isGrounded;
 
+    private AudioSource walkSound;
+    private bool isWalking = false;
+
     void Start()
     {
         this.rb = this.GetComponent<Rigidbody>();
         this.anim = this.GetComponent<Animator>();
+        walkSound = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -30,24 +34,26 @@ public class Player : MonoBehaviour
 
     void Rotation()
     {
-        Quaternion deltaRotation = Quaternion.Euler(this.eulerAngleVelocity * Time.fixedDeltaTime);
         this.eulerAngleVelocity = new Vector3(0, Input.GetAxis("Mouse X") * this.speedRotation, 0);
+        Quaternion deltaRotation = Quaternion.Euler(this.eulerAngleVelocity * Time.fixedDeltaTime);
         this.rb.MoveRotation(this.rb.rotation * deltaRotation);
     }
 
     void Movement()
     {
-        Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal") * this.speed * Time.fixedDeltaTime, 0,
-                                      Input.GetAxis("Vertical") * this.speed * Time.fixedDeltaTime);
-        this.rb.MovePosition(this.rb.position + transform.TransformDirection(m_Input));
+        Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        Vector3 moveDirection = m_Input * speed * Time.fixedDeltaTime;
+        this.rb.MovePosition(this.rb.position + transform.TransformDirection(moveDirection));
 
         // Set Animation: Walking
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
+            isWalking = true;
             this.anim.SetBool("isWalking", true);
 
         } else
         {
+            isWalking = false;
             this.anim.SetBool("isWalking", false);
         }
     }
@@ -62,11 +68,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void WalkSound()
+    {
+        if (isWalking)
+        {
+            if (!walkSound.isPlaying)
+            {
+                walkSound.Play();
+            }
+        }
+        else
+        {
+            walkSound.Stop();
+        }
+    }
+
     void PlayerActions()
     {
         this.Movement();
         this.Rotation();
         this.Jump();
+        WalkSound();
     }
 
     void OnCollisionEnter(Collision collision)

@@ -10,6 +10,8 @@ public class PortalTextureSetupR : MonoBehaviour
     [SerializeField] private Camera cameraB;
     [SerializeField] private Material cameraMatB;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,11 @@ public class PortalTextureSetupR : MonoBehaviour
         {
             cameraToWork.targetTexture.Release();
         }
-        cameraToWork.targetTexture = new RenderTexture(Screen.width, Screen.height, 24);
+        cameraToWork.targetTexture = new RenderTexture(Screen.width, Screen.height, 0);
         materialToWork.mainTexture = cameraToWork.targetTexture;
+    }
+
+    public void RenderCamera()
+    {
     }
 }

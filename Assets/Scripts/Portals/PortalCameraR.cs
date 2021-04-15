@@ -5,9 +5,12 @@ using UnityEngine;
 public class PortalCameraR : MonoBehaviour
 {
 
-    [SerializeField] private Transform playerCamera;
+    [SerializeField] private Transform player;
+    [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform portal;
     [SerializeField] private Transform otherPortal;
+    [SerializeField] private Vector3 offset;
+
 
     // Start is called before the first frame update
     void Start()
@@ -24,8 +27,8 @@ public class PortalCameraR : MonoBehaviour
 
     public void CameraPosition()
     {
-        Vector3 playerOffsetFromPortal = playerCamera.position - otherPortal.position;
-        transform.position = portal.position + playerOffsetFromPortal;
+        Vector3 playerOffsetFromPortal = mainCamera.position - otherPortal.position;
+        transform.position = portal.position + playerOffsetFromPortal + player.position;
     }
 
     public void CameraRotation()
@@ -33,7 +36,7 @@ public class PortalCameraR : MonoBehaviour
         float angularDifferenceBetweenPortalRotations = Quaternion.Angle(portal.rotation, otherPortal.rotation);
 
         Quaternion portalRotationalDifference = Quaternion.AngleAxis(angularDifferenceBetweenPortalRotations, Vector3.up);
-        Vector3 newCameraDirection = portalRotationalDifference * playerCamera.forward;
+        Vector3 newCameraDirection = portalRotationalDifference * mainCamera.forward;
         transform.rotation = Quaternion.LookRotation(newCameraDirection, Vector3.up);
     }
 }
