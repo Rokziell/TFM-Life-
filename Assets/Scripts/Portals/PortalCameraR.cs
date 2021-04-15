@@ -27,8 +27,9 @@ public class PortalCameraR : MonoBehaviour
 
     public void CameraPosition()
     {
-        Vector3 playerOffsetFromPortal = mainCamera.position - otherPortal.position;
-        transform.position = portal.position + playerOffsetFromPortal + player.position;
+        var mainCameraPos = mainCamera.localToWorldMatrix.GetColumn(3);
+        Vector3 playerOffsetFromPortal = mainCameraPos - otherPortal.localToWorldMatrix.GetColumn(3);
+        transform.position = portal.position + playerOffsetFromPortal;
     }
 
     public void CameraRotation()
