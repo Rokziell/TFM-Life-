@@ -9,7 +9,6 @@ public class PortalCameraR : MonoBehaviour
     [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform portal;
     [SerializeField] private Transform otherPortal;
-    [SerializeField] private Vector3 offset;
 
 
     // Start is called before the first frame update
@@ -27,9 +26,8 @@ public class PortalCameraR : MonoBehaviour
 
     public void CameraPosition()
     {
-        var mainCameraPos = mainCamera.localToWorldMatrix.GetColumn(3);
-        Vector3 playerOffsetFromPortal = mainCameraPos - otherPortal.localToWorldMatrix.GetColumn(3);
-        transform.position = portal.position + playerOffsetFromPortal;
+        Vector3 playerOffsetFromPortal = mainCamera.position - otherPortal.position;
+        transform.position = (portal.position + playerOffsetFromPortal);
     }
 
     public void CameraRotation()

@@ -4,19 +4,31 @@ using UnityEngine;
 
 public class PortalTextureSetupR : MonoBehaviour
 {
-    [SerializeField] private Camera cameraA;
-    [SerializeField] private Material cameraMatA;
+    [SerializeField] private Camera cameraChildA;
+    [SerializeField] private Material cameraMatChildA;
+    [SerializeField] private Camera cameraChildB;
+    [SerializeField] private Material cameraMatChildB;
 
-    [SerializeField] private Camera cameraB;
-    [SerializeField] private Material cameraMatB;
+    [SerializeField] private Camera cameraAdultA;
+    [SerializeField] private Material cameraMatAdultA;
+    [SerializeField] private Camera cameraAdultB;
+    [SerializeField] private Material cameraMatAdultB;
 
-
+    [SerializeField] private Camera cameraOlderA;
+    [SerializeField] private Material cameraMatOlderA;
+    [SerializeField] private Camera cameraOlderB;
+    [SerializeField] private Material cameraMatOlderB;
 
     // Start is called before the first frame update
     void Start()
     {
-        CameraTextureSize(cameraA, cameraMatA);
-        CameraTextureSize(cameraB, cameraMatB);
+        CameraTextureSize(cameraChildA, cameraMatChildA);
+        CameraTextureSize(cameraAdultA, cameraMatAdultA);
+        CameraTextureSize(cameraOlderA, cameraMatOlderA);
+
+        CameraTextureSize(cameraChildB, cameraMatChildB);
+        CameraTextureSize(cameraAdultB, cameraMatAdultB);
+        CameraTextureSize(cameraOlderB, cameraMatOlderB);
     }
 
     public void CameraTextureSize(Camera cameraToWork, Material materialToWork)
