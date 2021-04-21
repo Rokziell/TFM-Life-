@@ -27,6 +27,8 @@ public class portalTeleporter : MonoBehaviour
                 Debug.Log("Paso");
 
                 playerIsOverlapping = false;
+                
+                Debug.Log(playerIsOverlapping);
             }
         }
     }
