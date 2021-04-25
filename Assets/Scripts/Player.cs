@@ -4,96 +4,51 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private Animator anim;
-    [SerializeField] private float speed;
-    [SerializeField] private float speedRotation;
-    [SerializeField] private float thrust;
-    [SerializeField] private Vector3 eulerAngleVelocity;
-    [SerializeField] private bool isGrounded;
+    [SerializeField] private CharacterController controller;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float turnSmoothTime = 0.1f;
+    [SerializeField] private float turnSmoothVelocity;
+    [SerializeField] Transform cam;
 
-    private AudioSource walkSound;
-    private bool isWalking = false;
+    [SerializeField] private float jumpSpeed = 14.0f;
+    [SerializeField] private float gravity = 20.0f;
+    [SerializeField] private Vector3 moveDirection = Vector3.zero;
 
     void Start()
     {
-        this.rb = this.GetComponent<Rigidbody>();
-        this.anim = this.GetComponent<Animator>();
-        walkSound = GetComponent<AudioSource>();
+        this.controller = GetComponent<CharacterController>();    
     }
 
     void Update()
     {
-        
+        this.Walk();
+        this.Jump();
     }
 
-    void FixedUpdate()
+    void Walk()
     {
-        this.PlayerActions();
-    }
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-    void Rotation()
-    {
-        this.eulerAngleVelocity = new Vector3(0, Input.GetAxis("Mouse X") * this.speedRotation, 0);
-        Quaternion deltaRotation = Quaternion.Euler(this.eulerAngleVelocity * Time.fixedDeltaTime);
-        this.rb.MoveRotation(this.rb.rotation * deltaRotation);
-    }
-
-    void Movement()
-    {
-        Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        Vector3 moveDirection = m_Input * speed * Time.fixedDeltaTime;
-        this.rb.MovePosition(this.rb.position + transform.TransformDirection(moveDirection));
-
-        // Set Animation: Walking
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        if (direction.magnitude >= 0.1f)
         {
-            isWalking = true;
-            this.anim.SetBool("isWalking", true);
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-        } else
-        {
-            isWalking = false;
-            this.anim.SetBool("isWalking", false);
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            this.controller.Move(moveDir.normalized * this.speed * Time.deltaTime);
         }
     }
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && this.isGrounded)
+        if (controller.isGrounded && Input.GetButton("Jump"))
         {
-            this.rb.AddForce(this.transform.up * this.thrust, ForceMode.Impulse);
-            this.isGrounded = false;
-            this.anim.SetBool("isWalking", false);
+            this.moveDirection.y = this.jumpSpeed;
         }
-    }
-
-    public void WalkSound()
-    {
-        if (isWalking)
-        {
-            if (!walkSound.isPlaying)
-            {
-                walkSound.Play();
-            }
-        }
-        else
-        {
-            walkSound.Stop();
-        }
-    }
-
-    void PlayerActions()
-    {
-        this.Movement();
-        this.Rotation();
-        this.Jump();
-        WalkSound();
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-            this.isGrounded = true;
+        this.moveDirection.y -= this.gravity * Time.deltaTime;
+        this.controller.Move(this.moveDirection * Time.deltaTime);
     }
 }
