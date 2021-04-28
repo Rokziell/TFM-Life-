@@ -30,11 +30,14 @@ public class Player : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         Vector3 direction = new Vector3(horizontal, 0f, vertical);
-
+        
         direction = cam.rotation * direction;
-        Quaternion targetAngleQuat = Quaternion.LookRotation(direction);
-        Quaternion finalRot = Quaternion.RotateTowards(transform.rotation, targetAngleQuat, turnSmoothVelocity); 
-        this.transform.rotation = finalRot;
+        if(direction != Vector3.zero)
+        {
+            Quaternion targetAngleQuat = Quaternion.LookRotation(direction);
+            Quaternion finalRot = Quaternion.RotateTowards(transform.rotation, targetAngleQuat, turnSmoothVelocity); 
+            this.transform.rotation = finalRot;
+        }
 
         controller.Move(transform.forward * direction.magnitude * Time.deltaTime * speed);
     }

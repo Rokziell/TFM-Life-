@@ -5,20 +5,15 @@ using UnityEngine;
 public class PortalCameraR : MonoBehaviour
 {
 
-    [SerializeField] private Transform player;
+    // [SerializeField] private Transform player;
     [SerializeField] private Transform mainCamera;
     [SerializeField] private Transform portal;
     [SerializeField] private Transform otherPortal;
 
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         CameraPosition();
         CameraRotation();
@@ -27,7 +22,8 @@ public class PortalCameraR : MonoBehaviour
     public void CameraPosition()
     {
         Vector3 playerOffsetFromPortal = mainCamera.position - otherPortal.position;
-        transform.position = (portal.position + playerOffsetFromPortal);
+        transform.position = portal.position + (portal.rotation * playerOffsetFromPortal);
+        
     }
 
     public void CameraRotation()
