@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
+    private CharacterController controller;
     [SerializeField] private float speed = 6f;
     [SerializeField] private float turnSmoothTime = 0.1f;
     [SerializeField] private float turnSmoothVelocity;
@@ -27,19 +27,16 @@ public class Player : MonoBehaviour
 
     void Walk()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical);
 
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            this.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        direction = cam.rotation * direction;
+        Quaternion targetAngleQuat = Quaternion.LookRotation(direction);
+        Quaternion finalRot = Quaternion.RotateTowards(transform.rotation, targetAngleQuat, turnSmoothVelocity); 
+        this.transform.rotation = finalRot;
 
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            this.controller.Move(moveDir.normalized * this.speed * Time.deltaTime);
-        }
+        controller.Move(transform.forward * direction.magnitude * Time.deltaTime * speed);
     }
 
     void Jump()

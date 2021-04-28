@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1979065860236394967}
   - component: {fileID: 9117110183423994713}
   - component: {fileID: 7742943269214143595}
-  - component: {fileID: 6274342799674776214}
+  - component: {fileID: 8389245261985000736}
   m_Layer: 0
   m_Name: Simple_Character
   m_TagString: Player
@@ -144,8 +144,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337eb48680ec25943a7bb35745fc7bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 0}
   speed: 5
+  turnSmoothTime: 0.1
+  turnSmoothVelocity: 10
+  cam: {fileID: 0}
+  jumpSpeed: 14
+  gravity: 20
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!82 &9117110183423994713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -266,7 +271,7 @@ MonoBehaviour:
   - {fileID: 0}
   maxAmount: 0
   amountCollected: 0
---- !u!143 &6274342799674776214
+--- !u!143 &8389245261985000736
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
