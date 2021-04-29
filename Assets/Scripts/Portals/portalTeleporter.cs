@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class portalTeleporter : MonoBehaviour
+public class PortalTeleporter : MonoBehaviour
 {
     public Transform receiver;
     private bool playerIsOverlapping = false;

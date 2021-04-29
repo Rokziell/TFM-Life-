@@ -5,12 +5,14 @@ using UnityEngine;
 public class PortalCameraR : MonoBehaviour
 {
 
-    // [SerializeField] private Transform player;
-    [SerializeField] private Transform mainCamera;
+    private Transform mainCamera;
     [SerializeField] private Transform portal;
     [SerializeField] private Transform otherPortal;
 
-
+     void Start() 
+    {
+        mainCamera = Camera.main.transform;
+    }
 
     // Update is called once per frame
     void LateUpdate()

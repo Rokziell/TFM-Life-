@@ -3,26 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    private CharacterController controller;
-    [SerializeField] private float speed = 6f;
-    [SerializeField] private float turnSmoothTime = 0.1f;
-    [SerializeField] private float turnSmoothVelocity;
+{   
+     private CharacterController controller;
+    private Vector3 moveDirection = Vector3.zero;
     [SerializeField] Transform cam;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float turnSmoothVelocity;
+    [SerializeField] private float jumpSpeed = 20.0f;
+    [SerializeField] private float gravity = 10.0f;
 
-    [SerializeField] private float jumpSpeed = 14.0f;
-    [SerializeField] private float gravity = 20.0f;
-    [SerializeField] private Vector3 moveDirection = Vector3.zero;
+    private bool isGrounded;
 
     void Start()
     {
         this.controller = GetComponent<CharacterController>();    
     }
 
-    void Update()
+    void FixedUpdate()
     {
         this.Walk();
         this.Jump();
+        Move();
     }
 
     void Walk()
@@ -35,20 +36,30 @@ public class Player : MonoBehaviour
         if(direction != Vector3.zero)
         {
             Quaternion targetAngleQuat = Quaternion.LookRotation(direction);
-            Quaternion finalRot = Quaternion.RotateTowards(transform.rotation, targetAngleQuat, turnSmoothVelocity); 
+            Quaternion finalRot = Quaternion.RotateTowards(transform.rotation, targetAngleQuat, turnSmoothVelocity * Time.fixedDeltaTime); 
             this.transform.rotation = finalRot;
         }
+        Vector3 playerForward = new Vector3 (transform.forward.x, 0, transform.forward.z);
 
-        controller.Move(transform.forward * direction.magnitude * Time.deltaTime * speed);
+        moveDirection = (Vector3.up * moveDirection.y) + (playerForward * direction.magnitude * speed);
     }
 
     void Jump()
     {
-        if (controller.isGrounded && Input.GetButton("Jump"))
+        if(isGrounded)
+        {
+            moveDirection.y = 0;
+        }
+        if (isGrounded && Input.GetButton("Jump"))
         {
             this.moveDirection.y = this.jumpSpeed;
         }
-        this.moveDirection.y -= this.gravity * Time.deltaTime;
-        this.controller.Move(this.moveDirection * Time.deltaTime);
+        this.moveDirection.y -= this.gravity * Time.fixedDeltaTime;
+    }
+
+    public void Move() 
+    {
+        this.controller.Move(this.moveDirection * Time.fixedDeltaTime);
+        isGrounded = controller.isGrounded;
     }
 }
