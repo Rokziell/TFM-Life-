@@ -3,97 +3,63 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
-{
-    [SerializeField] private Rigidbody rb;
-    [SerializeField] private Animator anim;
-    [SerializeField] private float speed;
-    [SerializeField] private float speedRotation;
-    [SerializeField] private float thrust;
-    [SerializeField] private Vector3 eulerAngleVelocity;
-    [SerializeField] private bool isGrounded;
+{   
+     private CharacterController controller;
+    private Vector3 moveDirection = Vector3.zero;
+    [SerializeField] Transform cam;
+    [SerializeField] private float speed = 6f;
+    [SerializeField] private float turnSmoothVelocity;
+    [SerializeField] private float jumpSpeed = 20.0f;
+    [SerializeField] private float gravity = 10.0f;
 
-    private AudioSource walkSound;
-    private bool isWalking = false;
+    private bool isGrounded;
 
     void Start()
     {
-        this.rb = this.GetComponent<Rigidbody>();
-        this.anim = this.GetComponent<Animator>();
-        walkSound = GetComponent<AudioSource>();
-    }
-
-    void Update()
-    {
-        
+        this.controller = GetComponent<CharacterController>();    
     }
 
     void FixedUpdate()
     {
-        this.PlayerActions();
+        this.Walk();
+        this.Jump();
+        Move();
     }
 
-    void Rotation()
+    void Walk()
     {
-        this.eulerAngleVelocity = new Vector3(0, Input.GetAxis("Mouse X") * this.speedRotation, 0);
-        Quaternion deltaRotation = Quaternion.Euler(this.eulerAngleVelocity * Time.fixedDeltaTime);
-        this.rb.MoveRotation(this.rb.rotation * deltaRotation);
-    }
-
-    void Movement()
-    {
-        Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-        Vector3 moveDirection = m_Input * speed * Time.fixedDeltaTime;
-        this.rb.MovePosition(this.rb.position + transform.TransformDirection(moveDirection));
-
-        // Set Animation: Walking
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical);
+        
+        direction = cam.rotation * direction;
+        if(direction != Vector3.zero)
         {
-            isWalking = true;
-            this.anim.SetBool("isWalking", true);
-
-        } else
-        {
-            isWalking = false;
-            this.anim.SetBool("isWalking", false);
+            Quaternion targetAngleQuat = Quaternion.LookRotation(direction);
+            Quaternion finalRot = Quaternion.RotateTowards(transform.rotation, targetAngleQuat, turnSmoothVelocity * Time.fixedDeltaTime); 
+            this.transform.rotation = finalRot;
         }
+        Vector3 playerForward = new Vector3 (transform.forward.x, 0, transform.forward.z);
+
+        moveDirection = (Vector3.up * moveDirection.y) + (playerForward * direction.magnitude * speed);
     }
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump") && this.isGrounded)
+        if(isGrounded)
         {
-            this.rb.AddForce(this.transform.up * this.thrust, ForceMode.Impulse);
-            this.isGrounded = false;
-            this.anim.SetBool("isWalking", false);
+            moveDirection.y = 0;
         }
+        if (isGrounded && Input.GetButton("Jump"))
+        {
+            this.moveDirection.y = this.jumpSpeed;
+        }
+        this.moveDirection.y -= this.gravity * Time.fixedDeltaTime;
     }
 
-    public void WalkSound()
+    public void Move() 
     {
-        if (isWalking)
-        {
-            if (!walkSound.isPlaying)
-            {
-                walkSound.Play();
-            }
-        }
-        else
-        {
-            walkSound.Stop();
-        }
-    }
-
-    void PlayerActions()
-    {
-        this.Movement();
-        this.Rotation();
-        this.Jump();
-        WalkSound();
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-            this.isGrounded = true;
+        this.controller.Move(this.moveDirection * Time.fixedDeltaTime);
+        isGrounded = controller.isGrounded;
     }
 }
