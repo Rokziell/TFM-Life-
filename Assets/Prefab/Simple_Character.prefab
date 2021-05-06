@@ -130,10 +130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337eb48680ec25943a7bb35745fc7bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  turnSmoothTime: 0.2
-  turnSmoothVelocity: 360
   cam: {fileID: 2801838578604893122}
+  speed: 5
+  turnSmoothVelocity: 360
   jumpSpeed: 10
   gravity: 20
 --- !u!82 &9117110183423994713
@@ -273,7 +272,7 @@ CharacterController:
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1.1, z: 0}
 --- !u!1 &1966319918549786090
 GameObject:
   m_ObjectHideFlags: 0
