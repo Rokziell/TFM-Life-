@@ -5,6 +5,8 @@ using UnityEngine;
 public class PortalManager : MonoBehaviour
 {
 
+    [SerializeField] private string scenteToGo;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,8 @@ public class PortalManager : MonoBehaviour
     public void CallChangeScene()
     {
         GameManager gameManager = FindObjectOfType<GameManager>();
-        gameManager.ChangeScene();
+        gameManager.ChangeScene(scenteToGo);
+
     }
 
     private void OnTriggerEnter(Collider other)

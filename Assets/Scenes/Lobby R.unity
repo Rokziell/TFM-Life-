@@ -369,6 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!135 &137198160
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -572,6 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!135 &194316614
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1032,6 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!1 &388050312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,6 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!1 &392964189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,6 +1173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: 
 --- !u!4 &392964191
 Transform:
   m_ObjectHideFlags: 0
@@ -1454,6 +1459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: OldAdult_Puzzle
 --- !u!135 &516879613
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1600,6 +1606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!135 &609481439
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1895,6 +1902,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: OldAdult_Puzzle
 --- !u!135 &708049126
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2844,6 +2852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!1001 &981164848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2961,7 +2970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fce1c288575014eb036474ecd064cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToGo: Puzzle Museo
   victoryScreen: {fileID: 0}
 --- !u!1 &1039248594
 GameObject:
@@ -3101,6 +3109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: OldAdult_Puzzle
 --- !u!135 &1101844744
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3304,6 +3313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!135 &1172389129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5139,6 +5149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!1 &1937292228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5185,6 +5196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: OldAdult_Puzzle
 --- !u!135 &1937292231
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5298,6 +5310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!135 &2047810583
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5501,6 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: OldAdult_Puzzle
 --- !u!135 &2125124347
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5671,6 +5685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  scenteToGo: Puzzle Museo
 --- !u!1001 &2145613024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5752,19 +5767,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99996024
+      value: 0.9999602
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.008926235
+      value: -0.008926232
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000056251665
+      value: 0.00000003634101
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 6.020784e-10
+      value: 3.3295042e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5784,15 +5799,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01971732
+      value: 0.019717319
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003633564
+      value: 0.000000035091198
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -7.080302e-10
+      value: -6.892016e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalPosition.x

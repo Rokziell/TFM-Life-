@@ -5163,13 +5163,13 @@ MonoBehaviour:
       - m_Target: {fileID: 921790880}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ChangeScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Lobby R
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &552818534
@@ -8353,7 +8353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fce1c288575014eb036474ecd064cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToGo: Lobby R
   victoryScreen: {fileID: 1477790306}
 --- !u!4 &921790881
 Transform:
@@ -16775,19 +16774,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999066
+      value: 0.9999721
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.01366603
+      value: -0.0074809864
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000005399078
+      value: 0.000000065767026
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -6.483349e-10
+      value: 6.3562977e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16803,19 +16802,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99949414
+      value: 0.9997761
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03180354
+      value: 0.021162312
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000019142298
+      value: 0.000000064328574
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -6.7947575e-10
+      value: -0.0000000012245683
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalPosition.x
