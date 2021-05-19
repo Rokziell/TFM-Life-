@@ -8,17 +8,11 @@ public class AssignTotems : MonoBehaviour
     internal GameObject totemInstantiated;
     internal bool totemEquipped = false;
 
-    public void PickTotem(GameObject totem)
+    public void PickTotem(Totem totem)
     {
-        for(int i = 0; i < totem.GetComponent<Totem>().color.Length; i++)
-        {
-            if(totem.GetComponent<Totem>().color[i])
-            {
-                totemInstantiated = Instantiate(totem, equippedTotem.transform.position, 
+        totemInstantiated = Instantiate(totem.gameObject, equippedTotem.transform.position, 
                                                 equippedTotem.transform.rotation ,equippedTotem.transform);
-                totemInstantiated.GetComponent<Totem>().isChild = true;
-            }
-        }
+        totemInstantiated.GetComponent<Totem>().isChild = true;
         totemEquipped = true;
     }
 

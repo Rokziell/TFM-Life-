@@ -9,6 +9,7 @@ TagManager:
   - Collectables
   - Mixing Totems
   - Totem
+  - EquippedTotem
   layers:
   - Default
   - TransparentFX

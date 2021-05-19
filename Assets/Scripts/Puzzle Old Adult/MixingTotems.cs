@@ -25,49 +25,33 @@ public class MixingTotems : MonoBehaviour
             MixTotems();
         }
     }
-    
+
+    public void WrongMixing()
+    {
+        
+        if(totem1.transform.childCount != 0)
+        {
+            Destroy(totem1.transform.GetChild(0).gameObject);
+        }
+        if(totem2.transform.childCount != 0)
+        {
+           Destroy(totem2.transform.GetChild(0).gameObject);
+        }    
+        ResetPuzzleBools();
+    }
+
+    public void ResetPuzzleBools()
+    {
+        totem1Received = false;
+        totem2Received = false;
+    }
+
     public void MixTotems()
     {
-        caseNumber = totem1.GetComponentInChildren<Totem>().GetColor() + totem2.GetComponentInChildren<Totem>().GetColor();
-        switch (caseNumber)
-        {
-            case 0: 
-                Debug.Log("caso1");
-                break;
-            case 1:
-                Debug.Log("caso2");
-                break;
-            case 2:
-                Debug.Log("caso3");
-                break;
-            case 3:
-                Debug.Log("caso4");
-                break;
-            case 4:
-                Debug.Log("caso5");
-                break;
-            case 5:
-                Debug.Log("caso6");
-                break;
-            case 6:
-                Debug.Log("caso7");
-                break;
-            case 7:
-                Debug.Log("caso8");
-                break;
-            case 8:
-                Debug.Log("caso9");
-                break;
-            case 9:
-                Debug.Log("caso10");
-                break;
-            case 10:
-                Debug.Log("caso11");
-                break;
-            default:
-                Debug.Log("caso base");
-                break;
-        }
+        int totemNumber1 = totem1.GetComponentInChildren<Totem>().assignColor.GetHashCode();
+        int totemNumber2 = totem2.GetComponentInChildren<Totem>().assignColor.GetHashCode();
+        caseNumber = totemNumber1 + totemNumber2;
+        FindObjectOfType<StartPuzzle>().DesiredAnswer(caseNumber);
     }
 
     private void OnTriggerStay(Collider other) 
