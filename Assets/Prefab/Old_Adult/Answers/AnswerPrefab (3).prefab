@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3172746830835577535}
   - component: {fileID: 4633418267116108261}
+  - component: {fileID: -3319137136360186620}
   - component: {fileID: 7040462464522100556}
   - component: {fileID: 1513669371068214481}
   m_Layer: 0
   m_Name: AnswerPrefab (3)
-  m_TagString: Untagged
+  m_TagString: Totem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +41,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 540501239125418201}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &-3319137136360186620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540501239125418201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db98f7aa4ec40f04b952284393071526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myAnswer: 3
 --- !u!23 &7040462464522100556
 MeshRenderer:
   m_ObjectHideFlags: 0

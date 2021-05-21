@@ -22,11 +22,21 @@ public class AssignTotems : MonoBehaviour
         totemEquipped = false;
     }
 
-    public void GiveTotem(GameObject mixTotem)
+    public void GiveTotem(GameObject parentToGive)
     {
-        totemInstantiated.transform.SetParent(mixTotem.transform);
-        totemInstantiated.transform.localPosition = Vector3.zero;
-        totemInstantiated.transform.localRotation = Quaternion.identity;
-        totemEquipped = false;
+        if(totemInstantiated != null)
+        {
+            totemInstantiated.transform.SetParent(parentToGive.transform);
+            totemInstantiated.transform.localPosition = Vector3.zero;
+            totemInstantiated.transform.localRotation = Quaternion.identity;
+            totemEquipped = false;
+        }
+    }
+
+    public void ReceiveTotemAnswered(GameObject AnswerReceived)
+    {
+        totemInstantiated = Instantiate(AnswerReceived, equippedTotem.transform.position, 
+                    equippedTotem.transform.rotation, equippedTotem.transform);
+        totemEquipped = true;
     }
 }

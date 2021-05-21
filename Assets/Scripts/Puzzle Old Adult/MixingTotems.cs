@@ -6,7 +6,7 @@ public class MixingTotems : MonoBehaviour
 {
     [SerializeField] private GameObject totem1;
     [SerializeField] private GameObject totem2;
-    [SerializeField] private GameObject finalTotem;
+    [SerializeField] private StartPuzzle puzzle;
     private bool totemReceived = false;
     private bool totem1Received = false;
     private bool totem2Received = false;
@@ -26,7 +26,7 @@ public class MixingTotems : MonoBehaviour
         }
     }
 
-    public void WrongMixing()
+    public void FinishMixing()
     {
         
         if(totem1.transform.childCount != 0)
@@ -42,6 +42,7 @@ public class MixingTotems : MonoBehaviour
 
     public void ResetPuzzleBools()
     {
+        totemReceived = false;
         totem1Received = false;
         totem2Received = false;
     }
@@ -51,7 +52,7 @@ public class MixingTotems : MonoBehaviour
         int totemNumber1 = totem1.GetComponentInChildren<Totem>().assignColor.GetHashCode();
         int totemNumber2 = totem2.GetComponentInChildren<Totem>().assignColor.GetHashCode();
         caseNumber = totemNumber1 + totemNumber2;
-        FindObjectOfType<StartPuzzle>().DesiredAnswer(caseNumber);
+        puzzle.DesiredAnswer(caseNumber);
     }
 
     private void OnTriggerStay(Collider other) 
@@ -60,13 +61,20 @@ public class MixingTotems : MonoBehaviour
         {
             if(other.CompareTag("Player") && !totemReceived)
             {
-                ReceiveTotem(other.gameObject);
-                totemReceived = true;  
+                if(other.GetComponent<AssignTotems>().totemEquipped)
+                {
+                    ReceiveTotem(other.gameObject);                
+                    totemReceived = true;  
+                }
             }
         }    
     }
     private void OnTriggerExit(Collider other) 
     {
         totemReceived = false;    
+    }
+    private void OnEnable() 
+    {
+        totemReceived = false;  
     }
 }
