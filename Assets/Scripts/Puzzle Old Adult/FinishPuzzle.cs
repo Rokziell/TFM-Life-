@@ -7,7 +7,7 @@ public class FinishPuzzle : MonoBehaviour
 
     [SerializeField] private GameObject AnswerSpot;
     [SerializeField] private StartPuzzle puzzle;
-    private Answers.AnswersList answerKey;
+    public Answers.AnswersList answerKey;
     private bool totemReceived = false;
 
 
@@ -23,16 +23,17 @@ public class FinishPuzzle : MonoBehaviour
 
     public void CheckCorrectKey(AssignTotems player)
     {
-        if(answerKey.ToString() == player.GetComponentInChildren<Answers>().myAnswer.ToString())
+        if(player.GetComponentInChildren<Answers>() != null)
         {
-            totemReceived = true;
-            player.GiveTotem(AnswerSpot);
-            puzzle.OpenedLock(answerKey.GetHashCode());
-            Debug.Log("Correcto");
-            Debug.Log(answerKey.GetHashCode());
-        } else
-        {
-            Debug.Log("Mal");
+            if(answerKey.ToString() == player.GetComponentInChildren<Answers>().myAnswer.ToString())
+            {
+                totemReceived = true;
+                player.GiveTotem(AnswerSpot);
+                puzzle.OpenedLock(answerKey.GetHashCode());
+            } else
+            {
+                Debug.Log("Mal");
+            }
         }
     }
 

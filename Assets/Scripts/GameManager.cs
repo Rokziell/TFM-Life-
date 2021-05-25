@@ -6,10 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject victoryScreen;
+    [SerializeField] private GameObject victoryExit;
 
     private void Start()
     {
         HideMouse();
+    }
+
+    public void ShowExit()
+    {
+        victoryExit.SetActive(true);
     }
 
     public void VictoryScreen()

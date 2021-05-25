@@ -28,7 +28,7 @@ public class MoveDoor : MonoBehaviour
 
     public void Move()
     {
-        if(transform.position.y > -10)
+        if(transform.position.y > -5)
         {
             transform.Translate(speed * Time.deltaTime * Vector3.down);
 

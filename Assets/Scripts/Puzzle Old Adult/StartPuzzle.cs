@@ -13,15 +13,33 @@ public class StartPuzzle : MonoBehaviour
     [SerializeField] private float timeToEndPuzzle = 30.0f;
     [SerializeField] private MoveDoor doorToOpen;
     private AssignTotems playerToAssignTotem;
-    public Answers.AnswersList[] answersAmount;    
+    private GameManager gameManager;
+    public Answers.AnswersList[] answersAmount;   
     private bool[] lockOpened;
     private bool puzzleFinished = false;
+    public bool isLastPuzzle = false;
+
 
     private void Start() 
     {
         playerToAssignTotem = FindObjectOfType<AssignTotems>();
+        gameManager = FindObjectOfType<GameManager>();
+        CloseLocks();
         FindLocks();
         AssignLocks();
+    }
+
+    public void CloseLocks()
+    {
+        lockOpened = new bool[Answers.AnswersList.Answer15.GetHashCode() + 1];
+        for(int i = 0; i < lockOpened.Length; i++)
+        {
+            lockOpened[i] = true;
+        }
+        for(int i = 0; i < answersAmount.Length; i++)
+        {
+            lockOpened[answersAmount[i].GetHashCode()] = false;
+        }
     }
 
     public void FindLocks()
@@ -38,13 +56,12 @@ public class StartPuzzle : MonoBehaviour
         for(int i = 0; i < answersLocks.Length;i++)
         {
             answersLocks[i].AssignKey(answersAmount[i]);
-            lockOpened = new bool[answersLocks.Length];
         }
     }
 
     public void OpenedLock(int lockToOpen)
      {
-         lockOpened[lockToOpen] = true;
+        lockOpened[lockToOpen] = true;
      }
 
     public void ShowPuzzlePieces()
@@ -79,7 +96,6 @@ public class StartPuzzle : MonoBehaviour
     }
     public void RightAnswer(int answerCode)
     {
-        Debug.Log("Right");
         StopCoroutine("RestartPuzzle");
         HidePuzzlePieces();
         playerToAssignTotem.ReceiveTotemAnswered(answerPrefab[answersAmount[answerCode].GetHashCode()]);
@@ -87,7 +103,6 @@ public class StartPuzzle : MonoBehaviour
 
     public void WrongAnswer()
     {
-        Debug.Log("Wrong");
         mixingTotems.FinishMixing();
     }
 
@@ -95,7 +110,7 @@ public class StartPuzzle : MonoBehaviour
     {
         for(int i = 0; i < answersAmount.Length; i++)
         {
-            if(respuestaPlayer == answersAmount[i].GetHashCode() && !lockOpened[i])
+            if(respuestaPlayer == answersAmount[i].GetHashCode() && !lockOpened[answersAmount[i].GetHashCode()])
             {
                 RightAnswer(i);
             }        
@@ -113,6 +128,10 @@ public class StartPuzzle : MonoBehaviour
         if(puzzleFinished)
         {
             doorToOpen.StartMoving();
+            if(isLastPuzzle)
+            {
+                gameManager.ShowExit();
+            }
         }
     }
 
@@ -135,7 +154,7 @@ public class StartPuzzle : MonoBehaviour
     {
         if(Input.GetButton("Interact") && !activePuzzle && !puzzleFinished)
         {    
-            if(other.CompareTag("Player"))
+            if(other.CompareTag("Player") && !other.GetComponent<AssignTotems>().totemEquipped)
             {
                 ShowPuzzlePieces();
             }

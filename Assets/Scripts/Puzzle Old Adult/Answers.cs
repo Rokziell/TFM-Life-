@@ -18,5 +18,9 @@ public class Answers : MonoBehaviour
         Answer9,
         Answer10,
         Answer11,
+        Answer12,
+        Answer13,
+        Answer14,
+        Answer15
     }
 }
