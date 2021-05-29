@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Fire
   - Collectables
+  - Mixing Totems
+  - Totem
+  - EquippedTotem
   layers:
   - Default
   - TransparentFX
