@@ -369,7 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Adult_Puzzle
 --- !u!135 &137198160
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Adult_Puzzle
 --- !u!135 &194316614
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1034,7 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Child_Puzzle
 --- !u!1 &388050312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1143,7 +1143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Child_Puzzle
 --- !u!1 &392964189
 GameObject:
   m_ObjectHideFlags: 0
@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Adult_Puzzle
 --- !u!135 &609481439
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2852,7 +2852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Child_Puzzle
 --- !u!1001 &981164848
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2971,6 +2971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   victoryScreen: {fileID: 0}
+  victoryExit: {fileID: 0}
 --- !u!1 &1039248594
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,7 +3314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Adult_Puzzle
 --- !u!135 &1172389129
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5149,7 +5150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Child_Puzzle
 --- !u!1 &1937292228
 GameObject:
   m_ObjectHideFlags: 0
@@ -5310,7 +5311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Adult_Puzzle
 --- !u!135 &2047810583
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5685,7 +5686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c965126ca405fe45aa0fbcbe8b7bb32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenteToGo: Puzzle Museo
+  scenteToGo: Child_Puzzle
 --- !u!1001 &2145613024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5767,19 +5768,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9999602
+      value: 0.99996024
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.008926232
+      value: -0.008926231
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.00000003634101
+      value: 0.000000019116532
       objectReference: {fileID: 0}
     - target: {fileID: 4437502200697309340, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 3.3295042e-10
+      value: 1.00131126e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437502200716213071, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437502200716213071, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437502200716213071, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5799,15 +5812,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.019717319
+      value: 0.01971732
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000035091198
+      value: 0.00000003633564
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201110011572, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -6.892016e-10
+      value: -7.080302e-10
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5822,8 +5835,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.99882156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0.048535034
+      objectReference: {fileID: 0}
+    - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000036300122
       objectReference: {fileID: 0}
     - target: {fileID: 4437502201225960233, guid: db9a91bc283e6a34d8c0dafd8303d4b8, type: 3}
       propertyPath: m_LocalRotation.z

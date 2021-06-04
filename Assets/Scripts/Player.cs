@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {   
-     private CharacterController controller;
+    private CharacterController controller;
+    private Animator animComponent;
     private Vector3 moveDirection = Vector3.zero;
     [SerializeField] Transform cam;
     [SerializeField] private float speed = 6f;
@@ -16,7 +17,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        this.controller = GetComponent<CharacterController>();    
+        controller = GetComponent<CharacterController>();    
+        animComponent = GetComponent<Animator>();
     }
 
     void FixedUpdate()
@@ -61,5 +63,17 @@ public class Player : MonoBehaviour
     {
         this.controller.Move(this.moveDirection * Time.fixedDeltaTime);
         isGrounded = controller.isGrounded;
+        Animations();
+    }
+
+    public void Animations()
+    {
+        if(moveDirection.x != 0)
+        {
+            animComponent.SetBool("isWalking", true);
+        } else
+        {
+            animComponent.SetBool("isWalking", false);
+        }
     }
 }
