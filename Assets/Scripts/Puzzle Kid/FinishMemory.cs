@@ -21,7 +21,7 @@ public class FinishMemory : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             GameManager gameManager = FindObjectOfType<GameManager>();
-            gameManager.VictoryScreen();
+            gameManager.ShowExit();
         }
     }
 }

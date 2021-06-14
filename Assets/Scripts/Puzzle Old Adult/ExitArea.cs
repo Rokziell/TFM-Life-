@@ -19,16 +19,17 @@ public class ExitArea : MonoBehaviour
 
     }
 
-    public void BackToMainMenu()
+    IEnumerator BackToMainMenu()
     {
         gameManager.ChangeScene(sceneToGo);
+        return null;
     }
 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player"))
         {
-            BackToMainMenu();
+            Invoke("BackToMainMenu", 1);
         }    
     }
 

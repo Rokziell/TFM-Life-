@@ -2,15 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject victoryScreen;
+    [SerializeField] private GameObject victoryCanvas;
     [SerializeField] private GameObject victoryExit;
 
     private void Start()
     {
         HideMouse();
+    }
+
+    IEnumerator ExitDoor()
+    {
+        yield return new WaitForSeconds(1);
+        ShowExit();
+
+        yield return null;
     }
 
     public void ShowExit()
@@ -20,8 +29,7 @@ public class GameManager : MonoBehaviour
 
     public void VictoryScreen()
     {
-        ShowMouse();
-        victoryScreen.SetActive(true);
+        victoryCanvas.SetActive(true);
     }
 
     public void ChangeScene(string sceneToGo)

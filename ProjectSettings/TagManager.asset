@@ -10,6 +10,8 @@ TagManager:
   - Mixing Totems
   - Totem
   - EquippedTotem
+  - InteractZone
+  - InteractableObject
   layers:
   - Default
   - TransparentFX
@@ -21,7 +23,7 @@ TagManager:
   - 
   - Portal 1
   - Portal 2
-  - 
+  - Post-Processing
   - 
   - 
   - 
