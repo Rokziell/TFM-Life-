@@ -52,7 +52,9 @@ public class Player : MonoBehaviour
         }
         else
         {
-            objectPicked.GetComponent<InteractableObjectMovement>().StartMoving(transform, direction);
+            vertical = Input.GetAxisRaw("Vertical");
+            Vector3 newDirection = new Vector3(0f, 0f, vertical);
+            objectPicked.GetComponent<InteractableObjectMovement>().StartMoving(transform, newDirection);
             moveDirection = new Vector3(vertical, 0f, 0f);
         }
     }

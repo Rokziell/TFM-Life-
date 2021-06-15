@@ -5,74 +5,68 @@ using UnityEngine;
 public class InteractableObjectMovement : MonoBehaviour
 {
     internal bool isGrabbed;
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    private bool canMove = true;
+    [SerializeField] private float duration = 1f;
+    [SerializeField] private float elapsedTime = 0f;
+    [SerializeField] private float movement = 1f;
     public void StartMoving(Transform player, Vector3 direction)
     {
         Quaternion grabbingDirection = Quaternion.identity;
         if(player.rotation.eulerAngles.y < 45 && player.rotation.eulerAngles.y > 315)
         {
-            grabbingDirection = Quaternion.Euler(player.rotation.eulerAngles .x, 0f, player.rotation.eulerAngles.z);
+            grabbingDirection = Quaternion.Euler(0f, 0f, 0f);
         } else if(player.rotation.eulerAngles.y < 135 && player.rotation.eulerAngles.y > 45)
         {
-            grabbingDirection = Quaternion.Euler(player.rotation.eulerAngles.x, 90f, player.rotation.eulerAngles.z);
+            grabbingDirection = Quaternion.Euler(0f, 90f, 0f);
         } else if(player.rotation.eulerAngles.y < 225 && player.rotation.eulerAngles.y > 135)
         {
-            grabbingDirection = Quaternion.Euler(player.rotation.eulerAngles.x, 180f, player.rotation.eulerAngles.z);
+            grabbingDirection = Quaternion.Euler(0f, 180f, 0f);
         } else if(player.rotation.eulerAngles.y < 315 && player.rotation.eulerAngles.y > 225)
         {
-            grabbingDirection = Quaternion.Euler(player.rotation.eulerAngles.x, 270f, player.rotation.eulerAngles.z);
+            grabbingDirection = Quaternion.Euler(0f, 270f, 0f);
         }
-        direction.Normalize();
         Vector3 newRotation = grabbingDirection * Vector3.forward;
         newRotation = newRotation * direction.z;
-
-        // ObjectMovement(newRotation);
-        // ForwardMove(newRotation);
+        Debug.Log(newRotation.magnitude);
         
-        if(canMove)
-        {
-            StartCoroutine("MovementForward", newRotation);
-        }
-    }
-
-    private float delay = 2f;
-    public void ObjectMovement(Vector3 direction)
-    {
-        if(delay < Time.time)
-        {
-            delay += 2f;
-            float velocity = 4f;
-            GetComponent<Rigidbody>().position = transform.position + (new Vector3(direction.x, 0, direction.z) * velocity* Time.deltaTime);
-        }
-
-    }
-    private bool canMove = true;
-    IEnumerator MovementForward(Vector3 direction)
-    {
-        Debug.Log(direction);
-        if(direction.magnitude == 1)
+        if(canMove && CanBoxMove(newRotation, 2f) && newRotation.magnitude != 0)
         {
             canMove = false;
-            GetComponent<Rigidbody>().AddForce(new Vector3(direction.x, 0, direction.z) * 5, ForceMode.Impulse);
-            Debug.Log("me muevo leches");
-            yield return new WaitForSeconds(1f);
-         
-            canMove = true;
+            StartCoroutine("BoxAnimation", newRotation);
         }
-        yield return null;
     }
 
-    public void ForwardMove(Vector3 direction)
+    [SerializeField] private LayerMask raycastCollision = new LayerMask();
+    public bool CanBoxMove(Vector3 directionToMove, float rayCastSize)
     {
-        if(delay < Time.time)
-        {   
-            delay += Time.time;
-            GetComponent<Rigidbody>().AddForce(direction * 2, ForceMode.Impulse);
+        Ray myRay = new Ray();
+        RaycastHit myHit;
+        Debug.DrawRay(transform.position, directionToMove, Color.red, rayCastSize);
+
+        if(Physics.Raycast(transform.position, directionToMove, rayCastSize, raycastCollision))
+        {
+            return false;
         }
+        return true;
+    }
+    IEnumerator BoxAnimation(Vector3 direction)
+    {
+        elapsedTime = 0;
+        Vector3 initialPosition = transform.position;
+        Vector3 finalPosition = transform.position + (new Vector3(direction.x, 0, direction.z) * movement);
+        Debug.Log(initialPosition);
+        Debug.Log(finalPosition);
+
+        while(elapsedTime < duration)
+        {
+            transform.position = Vector3.Lerp(initialPosition, finalPosition, elapsedTime/duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        yield return new WaitForSeconds(0.2f);
+
+        elapsedTime = 0;
+        canMove = true;
+        yield return null;
     }
 }
