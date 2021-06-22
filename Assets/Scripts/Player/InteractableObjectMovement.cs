@@ -6,9 +6,12 @@ public class InteractableObjectMovement : MonoBehaviour
 {
     internal bool isGrabbed;
     private bool canMove = true;
+    private Vector3 playerPos;
     [SerializeField] private float duration = 1f;
     [SerializeField] private float elapsedTime = 0f;
     [SerializeField] private float movement = 1f;
+    [SerializeField] private LayerMask raycastCollision = new LayerMask();
+
     public void StartMoving(Transform player, Vector3 direction)
     {
         Quaternion grabbingDirection = Quaternion.identity;
@@ -27,35 +30,85 @@ public class InteractableObjectMovement : MonoBehaviour
         }
         Vector3 newRotation = grabbingDirection * Vector3.forward;
         newRotation = newRotation * direction.z;
-        Debug.Log(newRotation.magnitude);
         
-        if(canMove && CanBoxMove(newRotation, 2f) && newRotation.magnitude != 0)
+        if(canMove && CanBoxMove(newRotation, 1.35f) && newRotation.magnitude != 0 && !PlayerCollide(playerPos,newRotation))
         {
             canMove = false;
             StartCoroutine("BoxAnimation", newRotation);
         }
     }
 
-    [SerializeField] private LayerMask raycastCollision = new LayerMask();
     public bool CanBoxMove(Vector3 directionToMove, float rayCastSize)
     {
-        Ray myRay = new Ray();
-        RaycastHit myHit;
-        Debug.DrawRay(transform.position, directionToMove, Color.red, rayCastSize);
+        bool boolToReturn = true;
+        Vector3 startPosition = transform.position;
+        if(directionToMove.z > 0.1 || directionToMove.z < -0.1)
+        {
+            startPosition.x++;
+        }
+        if(directionToMove.x > 0.1 || directionToMove.x < -0.1)
+        {
+            startPosition.z++;
+        }
+
+        Debug.DrawRay(transform.position, directionToMove, Color.blue, rayCastSize);
+        Debug.DrawRay((startPosition + Vector3.up), directionToMove, Color.red, rayCastSize);
+        Debug.DrawRay((startPosition + Vector3.down), directionToMove, Color.red, rayCastSize);
+
 
         if(Physics.Raycast(transform.position, directionToMove, rayCastSize, raycastCollision))
         {
-            return false;
+            boolToReturn = false;
+        } 
+        if(Physics.Raycast(startPosition + Vector3.up, directionToMove, rayCastSize, raycastCollision))
+        {
+            boolToReturn = false;
         }
-        return true;
+        if(Physics.Raycast(startPosition + Vector3.down, directionToMove, rayCastSize, raycastCollision))
+        {
+            boolToReturn = false;
+        }
+
+        if(directionToMove.z > 0.1 || directionToMove.z < -0.1)
+        {
+            startPosition.x -= 2;
+        }
+        if(directionToMove.x > 0.1 || directionToMove.x < -0.1)
+        {
+            startPosition.z -= 2;
+        }
+        
+        Debug.DrawRay(startPosition + Vector3.up, directionToMove, Color.green, rayCastSize);
+        Debug.DrawRay(startPosition + Vector3.down, directionToMove, Color.green, rayCastSize);
+
+        if(Physics.Raycast(startPosition + Vector3.up, directionToMove, rayCastSize, raycastCollision))
+        {
+            boolToReturn = false;
+        }
+        if(Physics.Raycast(startPosition + Vector3.down, directionToMove, rayCastSize, raycastCollision))
+        {
+            boolToReturn = false;
+        }
+
+        return boolToReturn;
     }
+
+    public bool PlayerCollide(Vector3 playerPosition, Vector3 raycastDirection)
+    {
+        Debug.DrawRay(playerPosition, raycastDirection, Color.blue, 1f);
+        if(Physics.Raycast(playerPosition, raycastDirection, 2f, raycastCollision))
+        {
+            return true;
+        }
+        return false;
+    }
+
+
     IEnumerator BoxAnimation(Vector3 direction)
     {
         elapsedTime = 0;
         Vector3 initialPosition = transform.position;
         Vector3 finalPosition = transform.position + (new Vector3(direction.x, 0, direction.z) * movement);
-        Debug.Log(initialPosition);
-        Debug.Log(finalPosition);
 
         while(elapsedTime < duration)
         {
@@ -68,5 +121,19 @@ public class InteractableObjectMovement : MonoBehaviour
         elapsedTime = 0;
         canMove = true;
         yield return null;
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(other.CompareTag("Player"))
+        {
+            playerPos = other.transform.position;
+        }
+    }
+    private void OnTriggerStay(Collider other) {
+        if(other.CompareTag("Player"))
+        {
+            playerPos = other.transform.position;
+        }
     }
 }

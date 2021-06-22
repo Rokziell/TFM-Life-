@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class PushRigidBody : MonoBehaviour
 {
-    private bool objectPicked = false;
-
-    private GameObject objectToInteract;
+        private GameObject objectToInteract;
 
     private void Update() 
     {

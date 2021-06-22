@@ -12,6 +12,7 @@ TagManager:
   - EquippedTotem
   - InteractZone
   - InteractableObject
+  - Wall
   layers:
   - Default
   - TransparentFX
@@ -25,7 +26,7 @@ TagManager:
   - Portal 2
   - Post-Processing
   - Wall
-  - 
+  - Obstacles
   - 
   - 
   - 

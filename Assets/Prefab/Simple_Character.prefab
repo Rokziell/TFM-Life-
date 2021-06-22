@@ -1325,7 +1325,7 @@ GameObject:
   - component: {fileID: 8700416122830731089}
   m_Layer: 0
   m_Name: InteractZone
-  m_TagString: Untagged
+  m_TagString: InteractZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1338,8 +1338,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8897044110269784207}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00000011920929, y: 1, z: 0.7500001}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalPosition: {x: -0.00000014901161, y: 1.25, z: 0.64}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2089024363701283090}
   m_RootOrder: 3
@@ -1369,9 +1369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f821573eefaec3a4bb84a200b49d88e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectBody: {fileID: 0}
-  objectMoveDirection: {x: 0, y: 0, z: 0}
-  pushForce: 2
 --- !u!1001 &1785376654840345358
 PrefabInstance:
   m_ObjectHideFlags: 0

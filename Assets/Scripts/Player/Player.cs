@@ -79,7 +79,6 @@ public class Player : MonoBehaviour
         {
             if(objectToMove != null)
             {
-                controller.enabled = false;
                 objectPicked = objectToMove;
                 transform.SetParent(objectPicked.transform);
                 isGrabbing = true; 
@@ -88,7 +87,6 @@ public class Player : MonoBehaviour
                 transform.SetParent(null);
                 objectPicked = objectToMove;
                 isGrabbing = false;
-                controller.enabled = true;
             }
         }
     }

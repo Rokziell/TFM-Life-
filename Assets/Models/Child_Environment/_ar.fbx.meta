@@ -1,19 +1,9 @@
 fileFormatVersion: 2
-guid: 05ae52830bca4ab49a9619f407477a5e
+guid: a977146804766824e87eb878357bbeba
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Zocalo
-    second: {fileID: 2100000, guid: 797e8edbcbbe34340ade2b0832d6414f, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: aiStandardSurface1
-    second: {fileID: 2100000, guid: 590364c86a268f445b043072b3527dc9, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
