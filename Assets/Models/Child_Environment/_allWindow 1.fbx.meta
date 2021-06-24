@@ -1,39 +1,9 @@
 fileFormatVersion: 2
-guid: a977146804766824e87eb878357bbeba
+guid: 417f60602c1d6c04a8b934de942f8dfe
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Base Color
-    second: {fileID: 2100000, guid: cfe725b5b159f1d478629c1bb59632eb, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Light
-    second: {fileID: 2100000, guid: c1eb35bf623c69e41a3d403b8485e80e, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: RedLight
-    second: {fileID: 2100000, guid: 80791b2e8e0392f45bbbe1ef5d8df0ff, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Tires
-    second: {fileID: 2100000, guid: dac73bd5954519445ae6ee28a005410a, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wheel
-    second: {fileID: 2100000, guid: 30d57753c1896cb4ab190e3645ad0649, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Window
-    second: {fileID: 2100000, guid: 24d7bc6b9d02a7b48951692b66493ea8, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -122,7 +92,7 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   additionalBone: 0
