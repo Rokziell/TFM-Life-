@@ -50,21 +50,23 @@ public class InteractableObjectMovement : MonoBehaviour
         {
             startPosition.z++;
         }
+        Vector3 startPositionUp = startPosition + new Vector3(0f, 0.95f, 0f);
+        Vector3 startPositionDown = startPosition + new Vector3(0f, -0.95f, 0f);
 
         Debug.DrawRay(transform.position, directionToMove, Color.blue, rayCastSize);
-        Debug.DrawRay((startPosition + Vector3.up), directionToMove, Color.red, rayCastSize);
-        Debug.DrawRay((startPosition + Vector3.down), directionToMove, Color.red, rayCastSize);
+        Debug.DrawRay(startPositionUp, directionToMove, Color.red, rayCastSize);
+        Debug.DrawRay(startPositionDown, directionToMove, Color.red, rayCastSize);
 
 
         if(Physics.Raycast(transform.position, directionToMove, rayCastSize, raycastCollision))
         {
             boolToReturn = false;
         } 
-        if(Physics.Raycast(startPosition + Vector3.up, directionToMove, rayCastSize, raycastCollision))
+        if(Physics.Raycast(startPositionUp, directionToMove, rayCastSize, raycastCollision))
         {
             boolToReturn = false;
         }
-        if(Physics.Raycast(startPosition + Vector3.down, directionToMove, rayCastSize, raycastCollision))
+        if(Physics.Raycast(startPositionDown, directionToMove, rayCastSize, raycastCollision))
         {
             boolToReturn = false;
         }
@@ -78,14 +80,14 @@ public class InteractableObjectMovement : MonoBehaviour
             startPosition.z -= 2;
         }
         
-        Debug.DrawRay(startPosition + Vector3.up, directionToMove, Color.green, rayCastSize);
-        Debug.DrawRay(startPosition + Vector3.down, directionToMove, Color.green, rayCastSize);
+        Debug.DrawRay(startPositionUp, directionToMove, Color.green, rayCastSize);
+        Debug.DrawRay(startPositionDown, directionToMove, Color.green, rayCastSize);
 
-        if(Physics.Raycast(startPosition + Vector3.up, directionToMove, rayCastSize, raycastCollision))
+        if(Physics.Raycast(startPositionUp, directionToMove, rayCastSize, raycastCollision))
         {
             boolToReturn = false;
         }
-        if(Physics.Raycast(startPosition + Vector3.down, directionToMove, rayCastSize, raycastCollision))
+        if(Physics.Raycast(startPositionDown, directionToMove, rayCastSize, raycastCollision))
         {
             boolToReturn = false;
         }
@@ -95,8 +97,9 @@ public class InteractableObjectMovement : MonoBehaviour
 
     public bool PlayerCollide(Vector3 playerPosition, Vector3 raycastDirection)
     {
-        Debug.DrawRay(playerPosition, raycastDirection, Color.blue, 1f);
-        if(Physics.Raycast(playerPosition, raycastDirection, 2f, raycastCollision))
+        Vector3 offset = new Vector3(0f, 0.2f, 0f);
+        Debug.DrawRay(playerPosition + offset, raycastDirection + offset, Color.blue, 1f);
+        if(Physics.Raycast(playerPosition + offset, raycastDirection + offset, 2f, raycastCollision))
         {
             return true;
         }

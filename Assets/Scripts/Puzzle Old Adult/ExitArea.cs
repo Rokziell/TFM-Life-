@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ExitArea : MonoBehaviour
 {
     private GameManager gameManager;
+    [SerializeField] private GameObject myCanvas;
     [SerializeField] private string sceneToGo;
     [SerializeField] private SceneManager scene;
 
@@ -19,17 +20,22 @@ public class ExitArea : MonoBehaviour
 
     }
 
-    IEnumerator BackToMainMenu()
+    public void BackToMainMenu()
     {
         gameManager.ChangeScene(sceneToGo);
-        return null;
+    }
+
+    public void ShowCinematic()
+    {
+        myCanvas.SetActive(true);
     }
 
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player"))
         {
-            Invoke("BackToMainMenu", 1);
+            Debug.Log("cinematc");
+            Invoke("ShowCinematic", 1);
         }    
     }
 
