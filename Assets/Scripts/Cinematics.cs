@@ -20,7 +20,6 @@ public class Cinematics : MonoBehaviour
         myImage.sprite = imageToPlay[currentImage];
         currentImage++;
         Invoke("ChangeCinematic", duration);
-        Debug.Log("start");
     }
     public void ChangeCinematic()
     {
@@ -28,11 +27,9 @@ public class Cinematics : MonoBehaviour
         {
             myImage.sprite = imageToPlay[currentImage];
             currentImage++;
-            Debug.Log("nextImage");
             Invoke("ChangeCinematic", duration);
         } else
         {
-            Debug.Log("finish");
             FinishCinematic();
         }
     }
