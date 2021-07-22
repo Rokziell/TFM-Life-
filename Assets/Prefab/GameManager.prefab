@@ -186,8 +186,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fce1c288575014eb036474ecd064cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  victoryCanvas: {fileID: 0}
   victoryExit: {fileID: 8125745610718130238}
+  maxLevels: 3
 --- !u!114 &3399815632106579178
 MonoBehaviour:
   m_ObjectHideFlags: 0

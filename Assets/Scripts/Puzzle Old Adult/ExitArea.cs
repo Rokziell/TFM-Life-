@@ -15,11 +15,6 @@ public class ExitArea : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
     }
 
-    public void PlayPortalSound()
-    {
-
-    }
-
     public void BackToMainMenu()
     {
         gameManager.ChangeScene(sceneToGo);
@@ -30,11 +25,17 @@ public class ExitArea : MonoBehaviour
         myCanvas.SetActive(true);
     }
 
+    public void FinishedLevel()
+    {
+        GameManager.LevelFinished();
+    }
+
     private void OnTriggerEnter(Collider other) 
     {
         if(other.CompareTag("Player"))
         {
             Debug.Log("cinematc");
+            FinishedLevel();
             Invoke("ShowCinematic", 1);
         }    
     }

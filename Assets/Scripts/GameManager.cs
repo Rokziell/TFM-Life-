@@ -6,30 +6,33 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject victoryCanvas;
     [SerializeField] private GameObject victoryExit;
+    [SerializeField] private int maxLevels;
+    public static int levelFinished = 0;
 
     private void Start()
     {
         HideMouse();
+        CheckFinishedLevel();
     }
 
-    IEnumerator ExitDoor()
+    public void CheckFinishedLevel()
+    {   
+        Debug.Log(GameManager.levelFinished);
+        if(levelFinished == maxLevels)
+        {
+            ShowExit();
+        }
+    }
+    
+    public static void LevelFinished()
     {
-        yield return new WaitForSeconds(1);
-        ShowExit();
-
-        yield return null;
+        GameManager.levelFinished++;
     }
 
     public void ShowExit()
     {
         victoryExit.SetActive(true);
-    }
-
-    public void VictoryScreen()
-    {
-        victoryCanvas.SetActive(true);
     }
 
     public void ChangeScene(string sceneToGo)
